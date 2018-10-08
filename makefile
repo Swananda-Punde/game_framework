@@ -7,4 +7,5 @@ chat_client_online.o : chat_client_online.cpp ./Headers/chat_client_online.h
 chat_proto.o : chat_client_online.o
 		g++ -c chat_proto.cpp chat_client_online.o -lboost_system -lpthread -lboost_serialization  -fPIC -o chat_proto.o
 
-clean : rm chat_proto.o chat_client_online.o chat_proto.so
+clean : 
+	rm chat_proto.o chat_client_online.o chat_proto.so
