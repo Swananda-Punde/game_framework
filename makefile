@@ -1,3 +1,5 @@
+PREFIX = /usr/local
+
 chat_proto.so : chat_proto.o chat_client_online.o
 		g++ -shared -o chat_proto.so chat_proto.o chat_client_online.o -lm -fPIC
 
@@ -9,3 +11,8 @@ chat_proto.o : chat_client_online.o
 
 clean : 
 	rm chat_proto.o chat_client_online.o chat_proto.so
+
+.PHONY : install
+install : 
+	cp chat_proto.so $(PREFIX)/bin
+#	mkdir -p $(PREFIX)/bin/myfiles
