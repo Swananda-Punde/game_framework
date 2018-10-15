@@ -20,6 +20,8 @@ class chat_proto{
 			this->from = from;
 			this->msg = msg;
 		}
+		chat_proto():from{""},msg{""}
+		{}
 		string get_from()
 		{
 			return from;
