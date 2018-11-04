@@ -1,6 +1,9 @@
 #ifndef CHAT_PROTO
 #define CHAT_PROTO
 
+#include <boost/archive/text_oarchive.hpp>
+#include <boost/archive/text_iarchive.hpp>
+
 using std::string;
 
 class chat_proto{

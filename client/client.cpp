@@ -1,6 +1,8 @@
 #include<iostream>
 #include<boost/asio.hpp>
 #include "../Headers/chat_proto.h"
+#include "../Headers/handle_send.h"
+#include "../Headers/handle_receive.h"
 #include<boost/archive/text_oarchive.hpp>
 #include<boost/archive/text_iarchive.hpp>
 #include<sstream>
@@ -38,18 +40,20 @@ int main(int argc, char *argv[])
 			
 			cout << "Enter Message To send : ";
 			cin >> buffer;
-			if(std::to_string(buffer)."exit")
+			if(strcmp(buffer,"exit") == 0)
 				break;
-			socket.send_to(boost::asio::buffer(buffer), receiver_endpoint);
-
+			handle_send(socket, receiver_endpoint, buffer);
+			/*socket.send_to(boost::asio::buffer(buffer), receiver_endpoint);
+*/
 			udp::endpoint sender_endpoint;
-			size_t len = socket.receive_from(boost::asio::buffer(buffer), sender_endpoint);
+		/*	size_t len = socket.receive_from(boost::asio::buffer(buffer), sender_endpoint);
 			
 			std::istringstream ss(buffer);
 			text_iarchive ia(ss);
 			ia >> temp;
-		
-			cout<< "\nReceived from : "<<temp.get_from()<< " : "<<temp.get_msg()<<"\nSize : "<<len<<endl;
+		*/
+			temp = handle_receive(socket, &sender_endpoint);
+			cout<< "\nReceived from : "<<temp.get_from()<< " : "<<temp.get_msg()<<endl;
 		}
 	}
 	catch(std::exception &e) 
