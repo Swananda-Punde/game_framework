@@ -6,6 +6,6 @@
 
 using boost::asio::ip::udp;
 
-size_t handle_send(udp::socket, udp::endpoint, char[]);
+size_t handle_send(udp::socket&, udp::endpoint, char *);
 
 #endif

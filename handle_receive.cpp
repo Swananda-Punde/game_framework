@@ -14,11 +14,11 @@ using std::string;
 using boost::asio::ip::udp;
 using namespace boost::archive;
 
-chat_proto handle_receive(udp::socket socket, udp::socket *sender_endpoint)
+chat_proto handle_receive(udp::socket &socket, udp::endpoint *sender_endpoint)
 {
 	chat_proto temp;
 	char buffer[1024];
-	size_t len = socket_receive_from(boost::asio::buffer(buffer), (*sender_endpoint));
+	size_t len = socket.receive_from(boost::asio::buffer(buffer), (*sender_endpoint));
 
 	std::istringstream ss(buffer);
 	text_iarchive ia(ss);

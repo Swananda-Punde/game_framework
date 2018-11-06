@@ -36,24 +36,20 @@ int main(int argc, char *argv[])
 
 		for(int i= 0; ;i++)
 		{
-			char buffer[100];
+			char buffer[1024];
 			
 			cout << "Enter Message To send : ";
 			cin >> buffer;
 			if(strcmp(buffer,"exit") == 0)
 				break;
 			handle_send(socket, receiver_endpoint, buffer);
-			/*socket.send_to(boost::asio::buffer(buffer), receiver_endpoint);
-*/
+			/*socket.send_to(boost::asio::buffer(buffer), receiver_endpoint);*/
+
 			udp::endpoint sender_endpoint;
-		/*	size_t len = socket.receive_from(boost::asio::buffer(buffer), sender_endpoint);
-			
-			std::istringstream ss(buffer);
-			text_iarchive ia(ss);
-			ia >> temp;
-		*/
+		/*
 			temp = handle_receive(socket, &sender_endpoint);
 			cout<< "\nReceived from : "<<temp.get_from()<< " : "<<temp.get_msg()<<endl;
+		*/
 		}
 	}
 	catch(std::exception &e) 

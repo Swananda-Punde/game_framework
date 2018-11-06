@@ -4,6 +4,8 @@
 #include<boost/asio.hpp>
 #include "chat_proto.h"
 
-chat_proto handle_receive(udp::socket, udp::socket *);
+using boost::asio::ip::udp;
+
+chat_proto handle_receive(udp::socket&, udp::endpoint *);
 
 #endif
