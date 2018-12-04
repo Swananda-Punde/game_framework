@@ -32,13 +32,8 @@ int main(int argc, char *argv[])
 		udp::socket socket(io_service);
 		socket.open(udp::v4());
 
-		if(fork() > 0)
-		{
-			udp::endpoint sender_endpoint;
-			handle_receive(socket, &sender_endpoint);
-		}
 		chat_proto temp;
-		
+
 		for(int i= 0; ;i++)
 		{
 			char buffer[1024];
@@ -49,6 +44,8 @@ int main(int argc, char *argv[])
 				break;
 			handle_send(socket, receiver_endpoint, buffer);
 			/*socket.send_to(boost::asio::buffer(buffer), receiver_endpoint);*/
+
+			udp::endpoint sender_endpoint;
 		/*
 			temp = handle_receive(socket, &sender_endpoint);
 			cout<< "\nReceived from : "<<temp.get_from()<< " : "<<temp.get_msg()<<endl;

@@ -33,5 +33,13 @@ class chat_proto{
 		{
 			return msg;
 		}
+		void set_from(string from)
+		{
+			this->from = from;
+		}
+		void set_msg(string msg)
+		{
+			this->msg = msg;
+		}
 };
 #endif

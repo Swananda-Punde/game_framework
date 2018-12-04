@@ -14,10 +14,11 @@ using namespace boost::archive;
 list<chat_client_online> *client_list;
 udp::socket *socket_ptr;
 
-void configure_chat(io_service io_service, int port_no, list<chat_client_online> *ptr)
+//void configure_chat(io_service io_service, int port_no, list<chat_client_online> *ptr)
+void configure_chat(list<chat_client_online> *ptr)
 {
 	client_list = ptr;
-	socket_ptr = new udp::socket(io_service, udp::endpoint(udp::v4(), port_no));
+	//socket_ptr = new udp::socket(io_service, udp::endpoint(udp::v4(), port_no));
 }
 
 bool send_chat(chat_proto obj)
